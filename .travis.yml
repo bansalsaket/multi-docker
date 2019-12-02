@@ -9,14 +9,14 @@ script:
     - docker run -e CI=true test-build npm test -- --coverage
 
 after_success:
-    - docker build -t multi-client ./client
-    - docker build -t multi-nginx ./nginx
-    - docker build -t multi-server ./server
-    - docker build -t multi-worker ./worker
+    - docker build -t saketbansal/multi-client ./client
+    - docker build -t saketbansal/multi-nginx ./nginx
+    - docker build -t saketbansal/multi-server ./server
+    - docker build -t saketbansal/multi-worker ./worker
     #Login to docker client
     - docker login -u $DOCKER_ID -p $DOCKER_HUB_PASS
     # Push images to docker hub
-    - docker push multi-client
-    - docker push multi-nginx
-    - docker push multi-server
-    - docker push multi-worker
+    - docker push saketbansal/multi-client
+    - docker push saketbansal/multi-nginx
+    - docker push saketbansal/multi-server
+    - docker push saketbansal/multi-worker
